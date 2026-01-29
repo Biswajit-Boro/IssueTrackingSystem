@@ -10,13 +10,31 @@ namespace IssueTrackingSystem
 {
     public partial class WebForm1 : Security.BasePage
     {
+        protected override string[] AllowedRoles => new[] { "Admin", "User" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 LabelWelcome.Text = "Welcome Mr/Ms " + AuthContext.Username;
-                Response.Write(AuthContext.Role); //Can comment if want. 
 
+                string role = AuthContext.Role;
+
+                // Defensive check (should never fail, but exam-safe)
+                if (string.IsNullOrEmpty(role))
+                {
+                    Response.Redirect("~/Unauthorized.aspx", true);
+                    return;
+                }
+
+                // Role-based navigation
+                if (role == "User")
+                {
+                    BtnCreateIssue.Visible = false;
+                }
+                else if (role == "Admin")
+                {
+                    BtnCreateIssue.Visible = true;
+                }
             }
         }
 

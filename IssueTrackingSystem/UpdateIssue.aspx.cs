@@ -1,11 +1,12 @@
-﻿using System;
+﻿using IssueTrackingSystem.Security;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Configuration;
-using System.Data.SqlClient;
 
 namespace IssueTrackingSystem
 {
@@ -18,7 +19,7 @@ namespace IssueTrackingSystem
         {
 
 
-            if (Session["user"] == null)
+            if (!AuthContext.IsAuthenticated)
             {
                 Response.Redirect("LOGIN.aspx");
             }
@@ -45,7 +46,7 @@ namespace IssueTrackingSystem
             {
                 string query = @"UPDATE Issues 
                          SET Status = @status 
-                         WHERE [Issue ID] = @id";
+                         WHERE [Issue ID] = @id AND IsDeleted = 0";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -75,7 +76,7 @@ namespace IssueTrackingSystem
             {
                 string query = @"SELECT Title, Status 
                          FROM Issues 
-                         WHERE [Issue ID] = @id";
+                         WHERE [Issue ID] = @id AND IsDeleted = 0";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -88,6 +89,10 @@ namespace IssueTrackingSystem
                     {
                         lblTitle.Text = dr["Title"].ToString();
                         ddlStatus.SelectedValue = dr["Status"].ToString();
+                    }
+                    else
+                    {
+                        Response.Redirect("ViewIssues.aspx");
                     }
                 }
             }

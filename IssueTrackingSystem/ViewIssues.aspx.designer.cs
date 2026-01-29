@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IssueTrackingSystem {
-    
-    
-    public partial class ViewIssues {
-        
+namespace IssueTrackingSystem
+{
+
+
+    public partial class ViewIssues
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace IssueTrackingSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// gvIssues control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace IssueTrackingSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvIssues;
-        
+
         /// <summary>
         /// btnBack control.
         /// </summary>

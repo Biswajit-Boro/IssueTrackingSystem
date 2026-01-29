@@ -15,6 +15,7 @@
     AutoGenerateColumns="False"
     DataKeyNames="Issue ID"
     OnSelectedIndexChanged="gvIssues_SelectedIndexChanged"
+    OnRowCommand="gvIssues_RowCommand"
     BorderWidth="1"
     CellPadding="6">
 
@@ -26,8 +27,27 @@
 
          <%--THIS is the key --%>
         <asp:CommandField ShowSelectButton="True" />
+
+                <asp:TemplateField HeaderText="Delete">
+    <ItemTemplate>
+        <asp:Button
+            ID="btnDelete"
+            runat="server"
+            Text="Delete"
+            CommandName="DeleteIssue"
+            CommandArgument='<%# Eval("Issue ID") %>'
+            Visible='<%# IssueTrackingSystem.Security.AuthContext.Role == "Admin" %>' />
+        
+
+    </ItemTemplate>
+</asp:TemplateField>
     </Columns>
 </asp:GridView>
+
+
+       
+
+       
 
 
        
