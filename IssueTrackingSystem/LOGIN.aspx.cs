@@ -35,6 +35,11 @@ namespace IssueTrackingSystem
                 cmd.Parameters.AddWithValue("@user", UserNameTextBox.Text.Trim());
                 cmd.Parameters.AddWithValue("@pass", PasswordTextBox.Text.Trim());
 
+
+               
+
+                // cmd.Parameters.AddWithValue("@pass", PasswordTextBox.Text.Trim());
+
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
 
