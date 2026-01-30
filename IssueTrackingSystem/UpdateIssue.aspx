@@ -21,6 +21,28 @@
             <asp:ListItem>Closed</asp:ListItem>
         </asp:DropDownList>
         <br /><br />
+        <asp:Label ID="lblWorkLog" runat="server" 
+    Text="Work Progress / Work Log">
+</asp:Label>
+<br />
+
+<asp:TextBox 
+    ID="txtWorkLog"
+    runat="server"
+    TextMode="MultiLine"
+    Rows="5"
+    Columns="70">
+</asp:TextBox>
+
+<br /><br />
+        <asp:Label 
+    ID="lblMessage"
+    runat="server"
+    ForeColor="Red">
+</asp:Label>
+
+<br />
+
 
         <asp:Button ID="ButtonUpdate" runat="server" Text="Update Issue"
             OnClick="ButtonUpdate_Click" />
@@ -28,6 +50,7 @@
 
         <asp:Button ID="btnBack" runat="server" Text="Back"
             OnClick="ButtonBack_Click" />
+
 
     </form>
 </body>
